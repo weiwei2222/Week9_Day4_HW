@@ -10,7 +10,7 @@ function Nav() {
         <div>About</div>
       </Link>
       <Link to="/stocks">
-        <div>Dashboard</div>
+        <div>Stocks</div>
       </Link>
     </div>
   );

@@ -1,18 +1,19 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function Stock(props) {
-  const apiKey = "30d53e20d2075e17a1d54260b6dc8226";
+  const apiKey = "";
   const params = useParams();
   const symbol = params.symbol;
-  const url = `https://financialmodelingprep.com/api/v3/search?query=${symbol}&apikey=${apiKey}`;
-  const [stock, setStock] = useState("null");
+  const url = `https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apiKey}`;
+  const [stock, setStock] = useState(null);
 
   const getCoin = async () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setStock(data);
+      setStock(data[0]);
     } catch (e) {
       console.error(e);
     }

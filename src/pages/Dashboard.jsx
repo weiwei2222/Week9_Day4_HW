@@ -64,7 +64,7 @@ function Dashboard(props) {
       {stocks.map((stock) => {
         const { name, symbol } = stock;
         return (
-          <Link to={`/stock/${symbol}`}>
+          <Link to={`/stocks/${symbol}`}>
             <h2>{name}</h2>
           </Link>
         );

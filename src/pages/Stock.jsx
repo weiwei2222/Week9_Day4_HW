@@ -24,17 +24,6 @@ function Stock(props) {
     getStock();
   }, []);
 
-  // const loaded = () => {
-  //   return {stock.map((stock) => return (<>
-  //     <h1>{stock.name}</h1>
-  //     <h2>{stock.price}</h2>
-  //     <h2>{stock.change}</h2>
-  //   </>)
-  //    )
-  //   }
-
-  // };
-
   // Function for when data doesn't exist
   const loading = () => {
     return <h1>Loading...</h1>;

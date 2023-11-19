@@ -61,10 +61,10 @@ function Dashboard(props) {
 
   return (
     <div className="stockslist">
-      {stocks.map((stock) => {
+      {stocks.map((stock, index) => {
         const { name, symbol } = stock;
         return (
-          <Link to={`/stocks/${symbol}`}>
+          <Link to={`/stocks/${symbol}`} key={index}>
             <h2>{name}</h2>
           </Link>
         );

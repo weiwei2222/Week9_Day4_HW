@@ -13,7 +13,7 @@ function Stock(props) {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setStock(data[0]);
+      setStock(data);
     } catch (e) {
       console.error(e);
     }
@@ -24,22 +24,31 @@ function Stock(props) {
     getStock();
   }, []);
 
-  const loaded = () => {
-    return (
-      <div>
-        <h1>{stock.name}</h1>
-        <h2>{stock.price}</h2>
-        <h2>{stock.change}</h2>
-      </div>
-    );
-  };
+  // const loaded = () => {
+  //   return {stock.map((stock) => return (<>
+  //     <h1>{stock.name}</h1>
+  //     <h2>{stock.price}</h2>
+  //     <h2>{stock.change}</h2>
+  //   </>)
+  //    )
+  //   }
+
+  // };
 
   // Function for when data doesn't exist
   const loading = () => {
     return <h1>Loading...</h1>;
   };
 
-  return stock ? loaded() : loading();
+  return stock
+    ? stock.map((onestock, index) => (
+        <div key={index}>
+          <h1>Name:{onestock.name}</h1>
+          <h2>Price:{onestock.price}</h2>
+          <h3>Change:{onestock.change}%</h3>
+        </div>
+      ))
+    : loading();
 }
 
 export default Stock;

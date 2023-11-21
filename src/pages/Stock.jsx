@@ -8,6 +8,7 @@ function Stock(props) {
   const symbol = params.symbol;
   const url = `https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apiKey}`;
   const [stock, setStock] = useState(null);
+  console.log(stock, typeof stock);
 
   const getStock = async () => {
     try {
@@ -19,6 +20,7 @@ function Stock(props) {
     }
   };
 
+  console.log(stock, typeof stock);
   // useEffect to run getCoin when component mounts
   useEffect(() => {
     getStock();
@@ -29,12 +31,15 @@ function Stock(props) {
     return <h1>Loading...</h1>;
   };
 
+  console.log(stock);
   return stock
     ? stock.map((onestock, index) => (
         <div key={index}>
           <h1>Name:{onestock.name}</h1>
           <h2>Price:{onestock.price}</h2>
           <h3>Change:{onestock.change}%</h3>
+          <h3>dayHigh:{onestock.dayHigh}</h3>
+          <h3>dayLow:{onestock.dayLow}</h3>
         </div>
       ))
     : loading();
